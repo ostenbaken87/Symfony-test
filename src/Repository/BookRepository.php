@@ -25,5 +25,29 @@ class BookRepository extends ServiceEntityRepository
             ->orderBy('b.id', 'DESC')
             ->getQuery();
     }
+
+    public function findPaginatedWithAuthor(int $page, int $limit): array
+    {
+        $offset = ($page - 1) * $limit;
+
+        $books = $this->createQueryBuilder('b')
+            ->innerJoin('b.author', 'a')
+            ->addSelect('a')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->orderBy('b.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        $total = $this->createQueryBuilder('b')
+            ->select('COUNT(b.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return [
+            'books' => $books,
+            'total' => $total,
+        ];
+    }
 }
 
