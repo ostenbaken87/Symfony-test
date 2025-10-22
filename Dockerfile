@@ -34,6 +34,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql zip intl opcache \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy composer from builder stage (useful for production maintenance)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 # Configure PHP for production
 RUN { \
     echo 'opcache.enable=1'; \

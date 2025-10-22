@@ -43,13 +43,9 @@ docker-compose up -d
 - `symfony_nginx` - Nginx веб-сервер
 - `symfony_mysql` - MySQL 8.0 база данных
 
-4. Установка зависимостей
 
-```bash
-docker-compose exec php composer install
-```
 
-5. Запуск миграций
+4. Запуск миграций
 
 ```bash
 docker-compose exec php php bin/console doctrine:migrations:migrate --no-interaction
