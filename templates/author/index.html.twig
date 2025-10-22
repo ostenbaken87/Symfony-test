@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список авторов{% endblock %}
+
+{% block body %}
+    <h1>Список авторов</h1>
+    
+    <a href="{{ path('author_new') }}" class="btn btn-success">Добавить автора</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя автора</th>
+                <th>Количество книг</th>
+                <th>Дата создания</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in authorsWithCounts %}
+            <tr>
+                <td>{{ item.author.id }}</td>
+                <td><a href="{{ path('author_show', {'id': item.author.id}) }}">{{ item.author.name }}</a></td>
+                <td>{{ item.bookCount }}</td>
+                <td>{{ item.author.createdAt|date('d.m.Y H:i') }}</td>
+                <td>
+                    <a href="{{ path('author_edit', {'id': item.author.id}) }}" class="btn btn-sm">Редактировать</a>
+                    <form method="post" action="{{ path('author_delete', {'id': item.author.id}) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.author.id) }}">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены?')">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Авторы не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
+

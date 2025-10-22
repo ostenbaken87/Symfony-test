@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Книга: {{ book.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+
+    <div class="card">
+        <p><strong>ID:</strong> {{ book.id }}</p>
+        <p><strong>Название:</strong> {{ book.title }}</p>
+        <p><strong>Автор:</strong> <a href="{{ path('author_show', {'id': book.author.id}) }}">{{ book.author.name }}</a></p>
+        <p><strong>ISBN:</strong> {{ book.isbn ?? 'Не указан' }}</p>
+        <p><strong>Год издания:</strong> {{ book.publishedYear ?? 'Не указан' }}</p>
+        <p><strong>Создана:</strong> {{ book.createdAt|date('d.m.Y H:i') }}</p>
+        <p><strong>Обновлена:</strong> {{ book.updatedAt|date('d.m.Y H:i') }}</p>
+    </div>
+
+    <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn">Редактировать</a>
+    <a href="{{ path('book_index') }}" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}
+

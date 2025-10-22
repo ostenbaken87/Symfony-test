@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать автора{% endblock %}
+
+{% block body %}
+    <h1>Редактировать автора</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Сохранить</button>
+        <a href="{{ path('author_index') }}" class="btn btn-secondary">Отмена</a>
+    {{ form_end(form) }}
+{% endblock %}
+

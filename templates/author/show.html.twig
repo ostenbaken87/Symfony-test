@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Автор: {{ author.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ author.name }}</h1>
+
+    <div class="card">
+        <p><strong>ID:</strong> {{ author.id }}</p>
+        <p><strong>Имя:</strong> {{ author.name }}</p>
+        <p><strong>Количество книг:</strong> {{ bookCount }}</p>
+        <p><strong>Создан:</strong> {{ author.createdAt|date('d.m.Y H:i') }}</p>
+        <p><strong>Обновлен:</strong> {{ author.updatedAt|date('d.m.Y H:i') }}</p>
+    </div>
+
+    <a href="{{ path('author_edit', {'id': author.id}) }}" class="btn">Редактировать</a>
+    <a href="{{ path('author_index') }}" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}
+
