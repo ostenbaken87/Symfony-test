@@ -1,0 +1,46 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation and test files
+README.md
+todo.md
+common.mdc
+Тестовое Symfony.md
+требование у исполнению тестового.md
+*.md
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Composer
+/vendor/
+
+# Symfony
+/var/
+/public/bundles/
+
+# Environment files
+.env.local
+.env.local.php
+.env.*.local
+
+# Node (if used)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+Dockerfile
+nginx.conf
+

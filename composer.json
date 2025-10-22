@@ -7,6 +7,10 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/dbal": "^3",
+        "doctrine/doctrine-bundle": "^2.18",
+        "doctrine/doctrine-migrations-bundle": "^3.5",
+        "doctrine/orm": "^3.5",
         "knplabs/knp-paginator-bundle": "^6.9",
         "symfony/asset": "7.1.*",
         "symfony/console": "7.1.*",
@@ -22,10 +26,6 @@
         "symfony/yaml": "7.1.*"
     },
     "require-dev": {
-        "doctrine/dbal": "^3",
-        "doctrine/doctrine-bundle": "^2.18",
-        "doctrine/doctrine-migrations-bundle": "^3.5",
-        "doctrine/orm": "^3.5",
         "symfony/maker-bundle": "^1.64"
     },
     "config": {
