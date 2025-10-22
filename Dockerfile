@@ -59,4 +59,3 @@ RUN chown -R www-data:www-data /var/www/symfony
 USER www-data
 
 EXPOSE 9000
-
